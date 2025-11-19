@@ -153,7 +153,7 @@ if (isConditionTrue_0) {
 
 };gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDPlayerObjects1Objects = Hashtable.newFrom({"Player": gdjs.Game_32SceneCode.GDPlayerObjects1});
 gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDBulletObjects1Objects = Hashtable.newFrom({"Bullet": gdjs.Game_32SceneCode.GDBulletObjects1});
-gdjs.Game_32SceneCode.asyncCallback14547740 = function (runtimeScene, asyncObjectsList) {
+gdjs.Game_32SceneCode.asyncCallback13208524 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Game_32SceneCode.localVariables);
 gdjs.copyArray(asyncObjectsList.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects2);
 
@@ -167,7 +167,7 @@ gdjs.copyArray(asyncObjectsList.getObjects("Player"), gdjs.Game_32SceneCode.GDPl
 }
 gdjs.Game_32SceneCode.localVariables.length = 0;
 }
-gdjs.Game_32SceneCode.idToCallbackMap.set(14547740, gdjs.Game_32SceneCode.asyncCallback14547740);
+gdjs.Game_32SceneCode.idToCallbackMap.set(13208524, gdjs.Game_32SceneCode.asyncCallback13208524);
 gdjs.Game_32SceneCode.eventsList6 = function(runtimeScene) {
 
 {
@@ -178,7 +178,7 @@ gdjs.Game_32SceneCode.eventsList6 = function(runtimeScene) {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.Game_32SceneCode.localVariables);
 for (const obj of gdjs.Game_32SceneCode.GDPlayerObjects1) asyncObjectsList.addObject("Player", obj);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(3), (runtimeScene) => (gdjs.Game_32SceneCode.asyncCallback14547740(runtimeScene, asyncObjectsList)), 14547740, asyncObjectsList);
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(3), (runtimeScene) => (gdjs.Game_32SceneCode.asyncCallback13208524(runtimeScene, asyncObjectsList)), 13208524, asyncObjectsList);
 }
 }
 
@@ -266,6 +266,10 @@ gdjs.Game_32SceneCode.GDBulletObjects1.length = 0;
 
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("FireBullet").FireTowardPosition((gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterXInScene()) - 100, (gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterYInScene()) + 20, gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDBulletObjects1Objects, (gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterXInScene()) + 50 * gdjs.Game_32SceneCode.GDPlayerObjects1[i].getVariables().getFromIndex(0).getAsNumber(), (gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterYInScene()), 500, null);
+}
+}
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDBulletObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDBulletObjects1[i].getBehavior("MultiplayerObject").takeObjectOwnership();
 }
 }
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
@@ -360,6 +364,10 @@ gdjs.Game_32SceneCode.GDBulletObjects1.length = 0;
 
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("FireBullet").FireTowardPosition((gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterXInScene()) + 50, (gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterYInScene()) + 20, gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDBulletObjects1Objects, (gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterXInScene()) + 50 * gdjs.Game_32SceneCode.GDPlayerObjects1[i].getVariables().getFromIndex(0).getAsNumber(), (gdjs.Game_32SceneCode.GDPlayerObjects1[i].getCenterYInScene()), 500, null);
+}
+}
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDBulletObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDBulletObjects1[i].getBehavior("MultiplayerObject").takeObjectOwnership();
 }
 }
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
@@ -688,7 +696,12 @@ for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDPlayerObjects1.length;i<l;++i
 gdjs.Game_32SceneCode.GDPlayerObjects1.length = k;
 }
 if (isConditionTrue_0) {
+/* Reuse gdjs.Game_32SceneCode.GDBulletObjects1 */
 /* Reuse gdjs.Game_32SceneCode.GDPlayerObjects1 */
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDBulletObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDBulletObjects1[i].deleteFromScene(runtimeScene);
+}
+}
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].returnVariable(gdjs.Game_32SceneCode.GDPlayerObjects1[i].getVariables().getFromIndex(4)).add(1);
 }
@@ -709,7 +722,9 @@ gdjs.Game_32SceneCode.eventsList6(runtimeScene);} //End of subevents
 
 
 let isConditionTrue_0 = false;
-{
+isConditionTrue_0 = false;
+isConditionTrue_0 = gdjs.evtTools.runtimeScene.sceneJustBegins(runtimeScene);
+if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects1);
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("MultiplayerObject").setPlayerObjectOwnership(gdjs.Game_32SceneCode.GDPlayerObjects1[i].getVariables().getFromIndex(1).getAsNumber());
@@ -740,6 +755,10 @@ if (isConditionTrue_0) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].activateBehavior("SmoothCamera", true);
 }
 }
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDPlayerObjects1[i].activateBehavior("RemapForPlatformer", true);
+}
+}
 }
 
 }
@@ -763,6 +782,10 @@ if (isConditionTrue_0) {
 /* Reuse gdjs.Game_32SceneCode.GDPlayerObjects1 */
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].activateBehavior("SmoothCamera", false);
+}
+}
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDPlayerObjects1[i].activateBehavior("RemapForPlatformer", false);
 }
 }
 }
@@ -814,6 +837,117 @@ if (isConditionTrue_0) {
 }
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].returnVariable(gdjs.Game_32SceneCode.GDPlayerObjects1[i].getVariables().getFromIndex(3)).setNumber((gdjs.Game_32SceneCode.GDPlayerObjects1[i].getPointY("")));
+}
+}
+}
+
+}
+
+
+{
+
+gdjs.copyArray(runtimeScene.getObjects("MoveJoystick"), gdjs.Game_32SceneCode.GDMoveJoystickObjects1);
+gdjs.copyArray(runtimeScene.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects1);
+
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDMoveJoystickObjects1.length;i<l;++i) {
+    if ( gdjs.Game_32SceneCode.GDMoveJoystickObjects1[i].IsDirectionPushed4Way("Left", null) ) {
+        isConditionTrue_0 = true;
+        gdjs.Game_32SceneCode.GDMoveJoystickObjects1[k] = gdjs.Game_32SceneCode.GDMoveJoystickObjects1[i];
+        ++k;
+    }
+}
+gdjs.Game_32SceneCode.GDMoveJoystickObjects1.length = k;
+if (isConditionTrue_0) {
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDPlayerObjects1.length;i<l;++i) {
+    if ( gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("MultiplayerObject").isObjectOwnedByCurrentPlayer() ) {
+        isConditionTrue_0 = true;
+        gdjs.Game_32SceneCode.GDPlayerObjects1[k] = gdjs.Game_32SceneCode.GDPlayerObjects1[i];
+        ++k;
+    }
+}
+gdjs.Game_32SceneCode.GDPlayerObjects1.length = k;
+}
+if (isConditionTrue_0) {
+/* Reuse gdjs.Game_32SceneCode.GDPlayerObjects1 */
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("PlatformerObject").simulateControl("Left");
+}
+}
+}
+
+}
+
+
+{
+
+gdjs.copyArray(runtimeScene.getObjects("MoveJoystick"), gdjs.Game_32SceneCode.GDMoveJoystickObjects1);
+gdjs.copyArray(runtimeScene.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects1);
+
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDMoveJoystickObjects1.length;i<l;++i) {
+    if ( gdjs.Game_32SceneCode.GDMoveJoystickObjects1[i].IsDirectionPushed4Way("Right", null) ) {
+        isConditionTrue_0 = true;
+        gdjs.Game_32SceneCode.GDMoveJoystickObjects1[k] = gdjs.Game_32SceneCode.GDMoveJoystickObjects1[i];
+        ++k;
+    }
+}
+gdjs.Game_32SceneCode.GDMoveJoystickObjects1.length = k;
+if (isConditionTrue_0) {
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDPlayerObjects1.length;i<l;++i) {
+    if ( gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("MultiplayerObject").isObjectOwnedByCurrentPlayer() ) {
+        isConditionTrue_0 = true;
+        gdjs.Game_32SceneCode.GDPlayerObjects1[k] = gdjs.Game_32SceneCode.GDPlayerObjects1[i];
+        ++k;
+    }
+}
+gdjs.Game_32SceneCode.GDPlayerObjects1.length = k;
+}
+if (isConditionTrue_0) {
+/* Reuse gdjs.Game_32SceneCode.GDPlayerObjects1 */
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("PlatformerObject").simulateControl("Right");
+}
+}
+}
+
+}
+
+
+{
+
+gdjs.copyArray(runtimeScene.getObjects("JumpButton"), gdjs.Game_32SceneCode.GDJumpButtonObjects1);
+gdjs.copyArray(runtimeScene.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects1);
+
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDJumpButtonObjects1.length;i<l;++i) {
+    if ( gdjs.Game_32SceneCode.GDJumpButtonObjects1[i].getBehavior("MultitouchButton").IsPressed(null) ) {
+        isConditionTrue_0 = true;
+        gdjs.Game_32SceneCode.GDJumpButtonObjects1[k] = gdjs.Game_32SceneCode.GDJumpButtonObjects1[i];
+        ++k;
+    }
+}
+gdjs.Game_32SceneCode.GDJumpButtonObjects1.length = k;
+if (isConditionTrue_0) {
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.Game_32SceneCode.GDPlayerObjects1.length;i<l;++i) {
+    if ( gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("MultiplayerObject").isObjectOwnedByCurrentPlayer() ) {
+        isConditionTrue_0 = true;
+        gdjs.Game_32SceneCode.GDPlayerObjects1[k] = gdjs.Game_32SceneCode.GDPlayerObjects1[i];
+        ++k;
+    }
+}
+gdjs.Game_32SceneCode.GDPlayerObjects1.length = k;
+}
+if (isConditionTrue_0) {
+/* Reuse gdjs.Game_32SceneCode.GDPlayerObjects1 */
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("PlatformerObject").simulateControl("Jump");
 }
 }
 }
