@@ -51,6 +51,8 @@ asyncObjectsList.restoreLocalVariablesContainers(gdjs.Game_32SceneCode.localVari
 gdjs.copyArray(asyncObjectsList.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects2);
 
 gdjs.copyArray(runtimeScene.getObjects("WinnerText"), gdjs.Game_32SceneCode.GDWinnerTextObjects2);
+{gdjs.multiplayerMessageManager.sendCustomMessage("gameover", "GAME OVER");
+}
 {gdjs.evtTools.camera.showLayer(runtimeScene, "Winner");
 }
 {gdjs.evtsExt__ObjectPickingTools__PickLowestVariableValueAction.func(runtimeScene, gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDPlayerObjects2Objects, "deaths", null);
@@ -185,7 +187,8 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(3), 
 }
 
 
-};gdjs.Game_32SceneCode.eventsList7 = function(runtimeScene) {
+};gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDPlayerObjects1Objects = Hashtable.newFrom({"Player": gdjs.Game_32SceneCode.GDPlayerObjects1});
+gdjs.Game_32SceneCode.eventsList7 = function(runtimeScene) {
 
 {
 
@@ -948,6 +951,28 @@ if (isConditionTrue_0) {
 /* Reuse gdjs.Game_32SceneCode.GDPlayerObjects1 */
 {for(var i = 0, len = gdjs.Game_32SceneCode.GDPlayerObjects1.length ;i < len;++i) {
     gdjs.Game_32SceneCode.GDPlayerObjects1[i].getBehavior("PlatformerObject").simulateControl("Jump");
+}
+}
+}
+
+}
+
+
+{
+
+
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+isConditionTrue_0 = gdjs.multiplayerMessageManager.hasCustomMessageBeenReceived("gameover");
+if (isConditionTrue_0) {
+gdjs.copyArray(runtimeScene.getObjects("Player"), gdjs.Game_32SceneCode.GDPlayerObjects1);
+gdjs.copyArray(runtimeScene.getObjects("WinnerText"), gdjs.Game_32SceneCode.GDWinnerTextObjects1);
+{gdjs.evtTools.camera.showLayer(runtimeScene, "Winner");
+}
+{gdjs.evtsExt__ObjectPickingTools__PickLowestVariableValueAction.func(runtimeScene, gdjs.Game_32SceneCode.mapOfGDgdjs_9546Game_959532SceneCode_9546GDPlayerObjects1Objects, "deaths", null);
+}
+{for(var i = 0, len = gdjs.Game_32SceneCode.GDWinnerTextObjects1.length ;i < len;++i) {
+    gdjs.Game_32SceneCode.GDWinnerTextObjects1[i].getBehavior("Text").setText("PLAYER " + gdjs.evtTools.common.toString(((gdjs.Game_32SceneCode.GDPlayerObjects1.length === 0 ) ? gdjs.VariablesContainer.badVariablesContainer : gdjs.Game_32SceneCode.GDPlayerObjects1[0].getVariables()).getFromIndex(1).getAsNumber()) + " WINS WITH " + gdjs.evtTools.common.toString(((gdjs.Game_32SceneCode.GDPlayerObjects1.length === 0 ) ? gdjs.VariablesContainer.badVariablesContainer : gdjs.Game_32SceneCode.GDPlayerObjects1[0].getVariables()).getFromIndex(4).getAsNumber()) + " DEATHS!!");
 }
 }
 }
